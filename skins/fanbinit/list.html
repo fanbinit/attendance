@@ -49,11 +49,7 @@
 					<!--@end-->
 					<span class="sunday"|cond="$j%7==1" class="saturday"|cond="$j%7==0">
 						<!--@if(sprintf("%04d%02d%02d",$admin_date_info->_year,$admin_date_info->_month,$_day) == date("Ymd"))-->
-							<!--@if($oAttendanceModel->getIsChecked($logged_info->member_srl) == 0 && $is_available == 0 )-->
-								<span style="background:rgb(255, 102, 255); color:#fff;">{$_day++}</span>
-							<!--@else-->
-								<span style="background:#F66; color:#fff;">{$_day++}</span>
-							<!--@end-->
+							<span style="background:#F66; color:#fff;">{$_day++}</span>
 						<!--@else-->
 							{$_day++}
 						<!--@end-->
