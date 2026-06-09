@@ -1,0 +1,1716 @@
+@charset "utf-8";
+
+/* ============================================================
+   출석부 – Modern & Responsive Skin
+   ============================================================ */
+
+/* ── CSS Custom Properties ── */
+:root,
+.color_scheme_light {
+  --att-bg:            #ffffff;
+  --att-bg-secondary:  #f6f8fa;
+  --att-bg-tertiary:   #eef1f5;
+  --att-text:          #1f2328;
+  --att-text-muted:    #656d76;
+  --att-text-subtle:   #8b949e;
+  --att-border:        #d1d9e0;
+  --att-border-strong: #b0b8c1;
+  --att-accent:        #0969da;
+  --att-accent-hover:  #0550ae;
+  --att-accent-subtle: #ddf4ff;
+  --att-success:       #1a7f37;
+  --att-success-bg:    #dafbe1;
+  --att-success-border:#aceebb;
+  --att-danger:        #cf222e;
+  --att-danger-bg:     #ffebe9;
+  --att-warning:       #9a6700;
+  --att-warning-bg:    #fff8c5;
+  --att-shadow-sm:     0 1px 2px rgba(0,0,0,.06);
+  --att-shadow-md:     0 4px 12px rgba(0,0,0,.08);
+  --att-shadow-lg:     0 8px 24px rgba(0,0,0,.12);
+  --att-radius-sm:     6px;
+  --att-radius-md:     10px;
+  --att-radius-lg:     14px;
+  --att-row-highlight: #f0fdf4;
+  --att-popover-bg:    #ffffff;
+  --att-overlay:       rgba(0,0,0,.04);
+}
+
+.color_scheme_dark {
+  --att-bg:            #0d1117;
+  --att-bg-secondary:  #161b22;
+  --att-bg-tertiary:   #1c2128;
+  --att-text:          #e6edf3;
+  --att-text-muted:    #8b949e;
+  --att-text-subtle:   #6e7681;
+  --att-border:        #30363d;
+  --att-border-strong: #484f58;
+  --att-accent:        #58a6ff;
+  --att-accent-hover:  #79c0ff;
+  --att-accent-subtle: #0d1117;
+  --att-success:       #3fb950;
+  --att-success-bg:    rgba(63,185,80,.12);
+  --att-success-border:rgba(63,185,80,.3);
+  --att-danger:        #f85149;
+  --att-danger-bg:     rgba(248,81,73,.12);
+  --att-warning:       #d29922;
+  --att-warning-bg:    rgba(210,153,34,.12);
+  --att-shadow-sm:     0 1px 2px rgba(0,0,0,.3);
+  --att-shadow-md:     0 4px 12px rgba(0,0,0,.4);
+  --att-shadow-lg:     0 8px 24px rgba(0,0,0,.5);
+  --att-radius-sm:     6px;
+  --att-radius-md:     10px;
+  --att-radius-lg:     14px;
+  --att-row-highlight: rgba(63,185,80,.08);
+  --att-popover-bg:    #1c2128;
+  --att-overlay:       rgba(255,255,255,.03);
+}
+
+
+/* ============================================================
+   1. BASE / RESET
+   ============================================================ */
+
+.xl {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif, "Apple Color Emoji",
+               "Segoe UI Emoji";
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--att-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.att {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.att img { border: 0; }
+
+.att table,
+.att input,
+.att textarea,
+.att select {
+  font-size: 13px;
+  letter-spacing: normal;
+}
+
+.att table { width: 100%; }
+
+.att .iCheck {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  vertical-align: middle;
+}
+
+
+/* ============================================================
+   2. TAB NAVIGATION
+   ============================================================ */
+
+.xl .nav {
+  margin: 0 0 24px 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 0;
+}
+
+.xl .nav::before,
+.xl .nav::after { display: none; }
+
+.xl .nav > li {
+  float: none;
+  margin-bottom: -2px;
+}
+
+.xl .nav > li > a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--att-text-muted);
+  text-decoration: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  transition: color .2s ease, border-color .2s ease;
+  line-height: 1.5;
+  margin: 0;
+  background: transparent;
+}
+
+.xl .nav > li > a:hover,
+.xl .nav > li > a:focus {
+  color: var(--att-text);
+  background: transparent;
+  border-bottom-color: var(--att-border-strong);
+}
+
+.xl .nav > li.active > a,
+.xl .nav > li.active > a:hover,
+.xl .nav > li.active > a:focus {
+  color: var(--att-accent);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--att-accent);
+  cursor: default;
+  font-weight: 600;
+}
+
+.xl .nav-tabs {
+  border-bottom: 2px solid var(--att-border);
+}
+
+
+/* ============================================================
+   3. TOP NAV BAR
+   ============================================================ */
+
+.navi {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  margin: 0 0 20px 0;
+  font-size: 13px;
+}
+
+.navi a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* The admin buttons span (margin-left:20px inline) */
+.navi > span[style*="margin-left:20px"] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+/* The month-nav span (float:right inline) */
+.navi > span[style*="float:right"] {
+  float: none !important;
+  margin-left: auto;
+  margin-right: 0 !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Clock: prevent width jitter */
+#clock {
+  display: inline-block;
+  min-width: 10.5em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", Menlo, Consolas, monospace;
+  letter-spacing: .02em;
+}
+
+/* ── Button base ── */
+.navi .att-btn,
+.att-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: var(--att-radius-sm);
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background .15s ease, border-color .15s ease,
+              box-shadow .15s ease, transform .1s ease;
+  text-decoration: none;
+  color: #ffffff;
+  background: var(--att-accent);
+  border-color: var(--att-accent);
+}
+
+.att-btn-primary:hover,
+.att-btn-primary:focus {
+  color: #ffffff;
+  background: var(--att-accent-hover);
+  border-color: var(--att-accent-hover);
+  box-shadow: var(--att-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.att-btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.att-btn-primary.disabled,
+.att-btn-primary[disabled] {
+  color: var(--att-text-subtle) !important;
+  background: var(--att-bg-tertiary) !important;
+  border-color: var(--att-border) !important;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.att-btn-primary.disabled font {
+  color: inherit !important;
+}
+
+
+/* ============================================================
+   4. SETTINGS / INFO TABLE (sat_info / sat_info_mobile)
+   ============================================================ */
+
+.sat {
+  position: relative;
+}
+
+.sat table {
+  max-width: 100%;
+  background: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.sat .table {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.sat .table th,
+.sat .table td {
+  padding: 10px 14px;
+  line-height: 1.5;
+  text-align: left;
+  vertical-align: middle;
+  border-top: 1px solid var(--att-border);
+}
+
+.sat .table th {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--att-text-muted);
+  background: var(--att-bg-secondary);
+  white-space: nowrap;
+  width: 90px;
+}
+
+.sat .table td {
+  background: var(--att-bg);
+  color: var(--att-text);
+}
+
+/* ── PC/Mobile info table visibility ── */
+.sat_info_mobile {
+  display: none;
+}
+
+.sat .table-bordered {
+  border: 1px solid var(--att-border);
+  border-collapse: separate;
+  border-left: 0;
+  border-radius: var(--att-radius-md);
+  overflow: visible;
+  box-shadow: var(--att-shadow-sm);
+}
+
+.sat .table-bordered th,
+.sat .table-bordered td {
+  border-left: 1px solid var(--att-border);
+}
+
+.sat .table-bordered thead:first-child tr:first-child th,
+.sat .table-bordered thead:first-child tr:first-child td,
+.sat .table-bordered tbody:first-child tr:first-child th,
+.sat .table-bordered tbody:first-child tr:first-child td,
+.sat .table-bordered caption + thead tr:first-child th,
+.sat .table-bordered caption + tbody tr:first-child td,
+.sat .table-bordered colgroup + thead tr:first-child th,
+.sat .table-bordered colgroup + tbody tr:first-child td {
+  border-top: 0;
+}
+
+.sat .table-bordered thead:first-child tr:first-child > th:first-child,
+.sat .table-bordered tbody:first-child tr:first-child > td:first-child,
+.sat .table-bordered tbody:first-child tr:first-child > th:first-child {
+  border-top-left-radius: var(--att-radius-md);
+}
+
+.sat .table-bordered thead:first-child tr:first-child > th:last-child,
+.sat .table-bordered tbody:first-child tr:first-child > td:last-child,
+.sat .table-bordered tbody:first-child tr:first-child > th:last-child {
+  border-top-right-radius: var(--att-radius-md);
+}
+
+.sat .table-bordered tbody:last-child tr:last-child > td:first-child,
+.sat .table-bordered tbody:last-child tr:last-child > th:first-child,
+.sat .table-bordered thead:last-child tr:last-child > th:first-child,
+.sat .table-bordered tfoot:last-child tr:last-child > td:first-child,
+.sat .table-bordered tfoot:last-child tr:last-child > th:first-child {
+  border-bottom-left-radius: var(--att-radius-md);
+}
+
+.sat .table-bordered tbody:last-child tr:last-child > td:last-child,
+.sat .table-bordered tbody:last-child tr:last-child > th:last-child,
+.sat .table-bordered thead:last-child tr:last-child > th:last-child,
+.sat .table-bordered tfoot:last-child tr:last-child > td:last-child,
+.sat .table-bordered tfoot:last-child tr:last-child > th:last-child {
+  border-bottom-right-radius: var(--att-radius-md);
+}
+
+
+/* ============================================================
+   5. CALENDAR
+   ============================================================ */
+
+.listTable {
+  width: 100%;
+  border: none;
+  background: none;
+  margin: 0 auto;
+  padding: 0;
+  table-layout: fixed;
+  font-size: 13px;
+  color: var(--att-text-muted);
+  position: relative;
+}
+
+.listTable::before { display: none; }
+
+.listTable a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.listTable th,
+.listTable td {
+  border: none;
+  padding: 0;
+  text-align: center;
+  vertical-align: top;
+  font-size: 13px;
+  background: transparent;
+}
+
+.listTable td.stamp,
+.listTable td.stamp1 {
+  position: relative;
+  height: 64px;
+  padding: 8px 2px 0 !important;
+  vertical-align: top;
+  background-image: none !important;
+  background: transparent !important;
+  border-radius: var(--att-radius-sm);
+  transition: background .15s ease;
+}
+
+.listTable td.stamp:hover,
+.listTable td.stamp1:hover {
+  background: var(--att-overlay) !important;
+}
+
+/* Day number */
+.listTable td.stamp span:not(.check),
+.listTable td.stamp1 span:not(.check) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 50%;
+  transition: background .15s ease, color .15s ease;
+}
+
+.listTable .sunday,
+.listTable .sunday a {
+  color: var(--att-danger) !important;
+}
+
+.listTable .saturday,
+.listTable .saturday a {
+  color: var(--att-accent) !important;
+}
+
+/* Today highlight */
+.listTable td.stamp span span[style*="background:#000"],
+.listTable td.stamp span span[style*="background:#F66"],
+.listTable td.stamp span span[style*="background:#f66"] {
+  background: var(--att-accent) !important;
+  color: #fff !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50% !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, .2);
+}
+
+.color_scheme_dark .listTable td.stamp span span[style*="background:#000"],
+.color_scheme_dark .listTable td.stamp span span[style*="background:#F66"],
+.color_scheme_dark .listTable td.stamp span span[style*="background:#f66"] {
+  background: var(--att-accent) !important;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, .2);
+}
+
+/* Dot indicators — absolute bottom */
+.listTable td.stamp::after,
+.listTable td.stamp1::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--att-border);
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.listTable td.stamp:has(.check)::after {
+  background: var(--att-success);
+  transform: translateX(-50%) scale(1.2);
+}
+
+.listTable td.stamp1::after {
+  background: transparent;
+  border: 1.5px dashed var(--att-border);
+}
+
+/* Hide legacy images */
+.listTable td.stamp span.check {
+  display: block !important;
+  width: 100% !important;
+  height: 0 !important;
+  overflow: hidden;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 0;
+}
+
+.listTable td.stamp span.check > img,
+.listTable td.stamp span:not(.check) > div,
+.listTable td.stamp1 span:not(.check) > div {
+  display: none !important;
+}
+
+/* Calendar legend */
+.cal_info {
+  margin: 16px 0 28px 0;
+  position: relative;
+  clear: both;
+}
+
+.cal_info table { width: 100%; }
+
+.cal_info td {
+  padding: 4px 8px;
+  white-space: nowrap;
+  font-size: 12px;
+  color: var(--att-text-muted);
+}
+
+/* Legend note text: wrap to next line on narrow screens */
+.cal_info td[width="100%"] {
+  white-space: normal;
+}
+
+.c1, .c2, .c3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-right: 14px;
+  font-size: 12px;
+  background-image: none !important;
+  padding-left: 0 !important;
+}
+
+.c1::before,
+.c2::before,
+.c3::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.c1::before { background: var(--att-border); }
+.c2::before { background: var(--att-success); }
+.c3::before { background: transparent; border: 1.5px dashed var(--att-border); }
+
+
+/* ============================================================
+   6. ALERTS & MESSAGES
+   ============================================================ */
+
+.sat .message {
+  padding: 14px 18px;
+  border-radius: var(--att-radius-sm);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.sat .message.info {
+  background: var(--att-accent-subtle);
+  color: var(--att-accent);
+  border: 1px solid var(--att-accent);
+  border-left: 3px solid var(--att-accent);
+}
+
+.color_scheme_dark .sat .message.info {
+  background: rgba(88, 166, 255, .08);
+}
+
+.sat .alert {
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  text-shadow: none;
+  border-radius: var(--att-radius-sm);
+  font-size: 13px;
+}
+
+.sat .alert h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sat .alert-success,
+.sat .alert-success h4 {
+  color: var(--att-success);
+}
+.sat .alert-success {
+  background: var(--att-success-bg);
+  border: 1px solid var(--att-success-border);
+  border-left: 3px solid var(--att-success);
+}
+
+.sat .alert-danger,
+.sat .alert-error {
+  color: var(--att-danger);
+  background: var(--att-danger-bg);
+  border: 1px solid var(--att-danger);
+  border-left: 3px solid var(--att-danger);
+}
+.sat .alert-danger h4,
+.sat .alert-error h4 {
+  color: var(--att-danger);
+}
+
+.sat .alert-info,
+.sat .alert-info h4 {
+  color: var(--att-accent);
+}
+.sat .alert-info {
+  background: var(--att-accent-subtle);
+  border: 1px solid var(--att-accent);
+  border-left: 3px solid var(--att-accent);
+}
+
+.sat .alert-warning {
+  color: var(--att-warning);
+  background: var(--att-warning-bg);
+  border: 1px solid var(--att-warning);
+  border-left: 3px solid var(--att-warning);
+}
+
+.sat .alert-block { padding: 16px 18px; }
+
+.sat .alert,
+.sat .message {
+  animation: fadeInUp .3s ease-out;
+}
+
+
+/* ============================================================
+   7. ATTENDANCE BOARD TABLE
+   ============================================================ */
+
+.sat .table-condensed th,
+.sat .table-condensed td {
+  padding: 10px 12px;
+}
+
+.sat .table-condensed {
+  border: 1px solid var(--att-border);
+  border-radius: var(--att-radius-md);
+  overflow: hidden;
+  box-shadow: var(--att-shadow-sm);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.sat .table-condensed thead th {
+  background: var(--att-bg-secondary);
+  color: var(--att-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  border-top: none;
+  border-bottom: 2px solid var(--att-border);
+  padding: 12px;
+  white-space: nowrap;
+}
+
+.sat .table-condensed tbody td {
+  border-top: 1px solid var(--att-border);
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.sat .table-condensed tbody tr {
+  transition: background .12s ease;
+}
+
+.sat .table-condensed tbody tr:hover > td {
+  background: var(--att-overlay);
+}
+
+/* Striped rows */
+.sat .table-striped tbody > tr:nth-child(odd) > td,
+.sat .table-striped tbody > tr:nth-child(odd) > th {
+  background: var(--att-bg-secondary);
+}
+
+.sat .table-striped tbody > tr:nth-child(even) > td,
+.sat .table-striped tbody > tr:nth-child(even) > th {
+  background: var(--att-bg);
+}
+
+/* Current user row */
+.sat .table tbody tr.success > td {
+  background: var(--att-row-highlight);
+  color: var(--att-text);
+  border-left: none;
+}
+
+.sat .table tbody tr.success > td:first-child {
+  box-shadow: inset 3px 0 0 var(--att-success);
+}
+
+.sat .table tbody tr.success > td a {
+  color: var(--att-text);
+}
+
+.sat .table tbody tr.success:hover > td {
+  background: var(--att-success-bg);
+}
+
+/* Rank column */
+.sat .table-condensed tbody td:first-child {
+  font-weight: 700;
+  color: var(--att-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Time column */
+.sat .table-condensed tbody td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", Menlo, monospace;
+  font-size: 12px;
+  color: var(--att-text-muted);
+}
+
+/* Random point */
+.sat .table-condensed tbody .randomdata span {
+  display: inline-block;
+  min-width: 36px;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Links */
+.sat a {
+  text-decoration: none;
+  color: var(--att-text);
+  transition: color .12s ease;
+}
+
+.sat a:hover {
+  color: var(--att-accent);
+}
+
+
+/* ============================================================
+   8. LABELS & BADGES
+   ============================================================ */
+
+.sat .label,
+.sat .badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #ffffff;
+  text-shadow: none;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background: var(--att-text-subtle);
+  border-radius: 20px;
+  letter-spacing: .02em;
+}
+
+.sat .badge { padding: 3px 10px; }
+
+.sat .label:empty,
+.sat .badge:empty { display: none; }
+
+.sat a.label:hover, .sat a.label:focus,
+.sat a.badge:hover, .sat a.badge:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  filter: brightness(1.1);
+}
+
+.sat .label-important, .sat .badge-important { background: var(--att-danger); }
+.sat .label-warning,   .sat .badge-warning   { background: #e09600; }
+.sat .label-success,   .sat .badge-success   { background: var(--att-success); }
+.sat .label-info,      .sat .badge-info      { background: var(--att-accent); }
+.sat .label-inverse,   .sat .badge-inverse   { background: var(--att-text); }
+
+.color_scheme_dark .sat .label-inverse,
+.color_scheme_dark .sat .badge-inverse { background: var(--att-text-muted); }
+
+
+/* ============================================================
+   9. POPOVERS
+   ============================================================ */
+
+.sat .popover {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 1050;
+  max-width: 280px;
+  padding: 0;
+  text-align: left;
+  white-space: normal;
+  background: var(--att-popover-bg);
+  border: 1px solid var(--att-border);
+  border-radius: var(--att-radius-md);
+  box-shadow: var(--att-shadow-lg);
+  background-clip: padding-box;
+}
+
+.sat .popover.bottom { margin-top: 30px; }
+
+.sat .popover-title {
+  padding: 10px 16px;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  background: var(--att-bg-secondary);
+  border-bottom: 1px solid var(--att-border);
+  border-radius: var(--att-radius-md) var(--att-radius-md) 0 0;
+  color: var(--att-text);
+}
+
+.sat .popover-title:empty { display: none; }
+
+.sat .popover-content {
+  padding: 12px 16px;
+  color: var(--att-text);
+}
+
+.sat .popover-content .label { margin: 2px; }
+
+.sat .popover .arrow,
+.sat .popover .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0; height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.sat .popover .arrow { border-width: 11px; }
+.sat .popover .arrow:after { border-width: 10px; content: ""; }
+
+.sat .popover.bottom .arrow {
+  top: -11px;
+  left: 50%;
+  margin-left: -11px;
+  border-bottom-color: var(--att-border);
+  border-top-width: 0;
+}
+
+.sat .popover.bottom .arrow:after {
+  top: 1px;
+  margin-left: -10px;
+  border-bottom-color: var(--att-popover-bg);
+  border-top-width: 0;
+}
+
+
+/* ============================================================
+   10. PAGINATION
+   ============================================================ */
+
+.sat .pagination {
+  margin: 12px 0 0;
+  text-align: center;
+}
+
+.sat .pagination ul {
+  display: inline-flex;
+  margin: 0; padding: 0;
+  list-style: none;
+  gap: 0;
+  border-radius: var(--att-radius-sm);
+  overflow: hidden;
+  box-shadow: var(--att-shadow-sm);
+  border: 1px solid var(--att-border);
+}
+
+.sat .pagination ul > li { display: inline; }
+
+.sat .pagination ul > li > a,
+.sat .pagination ul > li > span {
+  float: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--att-text);
+  background: var(--att-bg);
+  border: none;
+  border-left: 1px solid var(--att-border);
+  border-radius: 0;
+  transition: background .12s ease, color .12s ease;
+}
+
+.sat .pagination ul > li:first-child > a,
+.sat .pagination ul > li:first-child > span {
+  border-left: none;
+}
+
+.sat .pagination ul > li > a:hover,
+.sat .pagination ul > li > a:focus {
+  background: var(--att-bg-secondary);
+  color: var(--att-accent);
+}
+
+.sat .pagination ul > .active > a,
+.sat .pagination ul > .active > span {
+  background: var(--att-accent);
+  color: #ffffff;
+  border-left-color: var(--att-accent);
+  cursor: default;
+  font-weight: 700;
+}
+
+.sat .pagination ul > .disabled > a,
+.sat .pagination ul > .disabled > span {
+  color: var(--att-text-subtle);
+  cursor: not-allowed;
+  background: var(--att-bg);
+  opacity: .6;
+}
+
+/* Force all inner items to have no border-radius —
+   the parent ul handles rounding via overflow:hidden */
+.sat .pagination ul > li > a,
+.sat .pagination ul > li > span,
+.sat .pagination ul > li:first-child > a,
+.sat .pagination ul > li:first-child > span,
+.sat .pagination ul > li:last-child > a,
+.sat .pagination ul > li:last-child > span,
+.sat .pagination ul > .active > a,
+.sat .pagination ul > .active > span {
+  border-radius: 0 !important;
+}
+
+/* Legacy .pagination outside .sat */
+.pagination {
+  padding: 10px 0 0;
+  text-align: center;
+  line-height: normal;
+}
+
+.pagination a,
+.pagination strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--att-text);
+  background: var(--att-bg);
+  border: 1px solid var(--att-border);
+  text-decoration: none;
+  margin: 0 -1px;
+  vertical-align: middle;
+  transition: background .12s, color .12s;
+  border-radius: 0;
+}
+
+.pagination a:first-child,
+.pagination strong:first-child {
+  border-radius: var(--att-radius-sm) 0 0 var(--att-radius-sm);
+}
+
+.pagination a:last-child,
+.pagination strong:last-child {
+  border-radius: 0 var(--att-radius-sm) var(--att-radius-sm) 0;
+}
+
+.pagination a:hover,
+.pagination a:focus {
+  background: var(--att-bg-secondary);
+  color: var(--att-accent);
+  border-color: var(--att-border-strong);
+}
+
+.pagination strong {
+  background: var(--att-accent);
+  color: #ffffff;
+  border-color: var(--att-accent);
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   11. POINT LIST
+   ============================================================ */
+
+.point_list_body { margin: 0 0 20px 0; }
+
+.point_list {
+  width: 100%;
+  color: var(--att-text);
+  overflow: hidden;
+  border: 1px solid var(--att-border);
+  border-radius: var(--att-radius-md);
+  padding: 0;
+  font-size: 12px;
+  box-shadow: var(--att-shadow-sm);
+}
+
+.point_list td {
+  border: none;
+  padding: 10px 14px;
+  border-right: 1px solid var(--att-border);
+  border-bottom: 1px solid var(--att-border);
+  font-weight: normal;
+  white-space: nowrap;
+  color: var(--att-text);
+  font-size: 12px;
+  text-align: left;
+}
+
+.point_list th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--att-bg-secondary);
+  color: var(--att-text-muted);
+  border-right: 1px solid var(--att-border);
+  border-bottom: 1px solid var(--att-border);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+
+/* ============================================================
+   12. FORM ELEMENTS
+   ============================================================ */
+
+.att .iText {
+  position: relative;
+  padding: 6px 10px;
+  height: auto;
+  line-height: 1.5;
+  border: 1px solid var(--att-border);
+  border-radius: var(--att-radius-sm);
+  background: var(--att-bg);
+  color: var(--att-text);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.att .iText:focus {
+  border-color: var(--att-accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, .15);
+}
+
+.att textarea {
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid var(--att-border);
+  border-radius: var(--att-radius-sm);
+  background: var(--att-bg);
+  color: var(--att-text);
+}
+
+.write_author select,
+.write_author input[type="text"],
+.write_author input[type="password"] {
+  box-sizing: content-box;
+  display: inline-block;
+  height: auto;
+  padding: 4px 10px;
+  line-height: 1.5;
+  color: var(--att-text);
+  background: var(--att-bg);
+  border: 1px solid var(--att-border);
+  border-radius: var(--att-radius-sm);
+  vertical-align: middle;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.write_author input[type="text"]:focus,
+.write_author input[type="password"]:focus {
+  border-color: var(--att-accent);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, .15);
+}
+
+
+/* ============================================================
+   13. UTILITY BUTTONS
+   ============================================================ */
+
+.sm-btn,
+.sm-btn-de {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: var(--att-radius-sm);
+  transition: background .15s ease, border-color .15s ease,
+              box-shadow .15s ease, transform .1s ease;
+  text-decoration: none;
+}
+
+.sm-btn {
+  color: #ffffff;
+  background: var(--att-text);
+  border: 1px solid var(--att-text);
+}
+
+.sm-btn:hover {
+  background: var(--att-accent);
+  border-color: var(--att-accent);
+  color: #ffffff;
+  box-shadow: var(--att-shadow-sm);
+  transform: translateY(-1px);
+}
+
+.sm-btn-de {
+  color: var(--att-text);
+  background: var(--att-bg-secondary);
+  border: 1px solid var(--att-border);
+}
+
+.sm-btn-de:hover {
+  background: var(--att-bg-tertiary);
+  border-color: var(--att-border-strong);
+}
+
+.sm-btn-a {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #ffffff !important;
+  background: var(--att-text-muted);
+  border: 1px solid var(--att-text-muted);
+  border-radius: var(--att-radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .15s ease;
+}
+
+.sm-btn-a:hover {
+  background: var(--att-accent);
+  border-color: var(--att-accent);
+}
+
+.per  { background: var(--att-accent); color: #fff; padding: 2px 8px; font-size: 11px; border-radius: 4px; }
+.perm { background: var(--att-success); color: #fff; padding: 2px 8px; font-size: 11px; border-radius: 4px; }
+.pery { background: #e09600; color: #fff; padding: 2px 8px; font-size: 11px; border-radius: 4px; }
+
+
+/* ============================================================
+   14. DARK MODE OVERRIDES
+   ============================================================ */
+
+.color_scheme_dark .sat font[color="#FF0000"],
+.color_scheme_dark font[color="#FF0000"] {
+  color: var(--att-danger) !important;
+}
+
+.color_scheme_dark .sat font[color="#CCCCCC"],
+.color_scheme_dark font[color="#CCCCCC"] {
+  color: var(--att-text-subtle) !important;
+}
+
+.color_scheme_dark .navi a { color: inherit; }
+
+.color_scheme_dark .sat td[style*="color:#F33"],
+.color_scheme_dark .sat td[style*="font-weight:bold; color:#F33"] {
+  color: var(--att-danger) !important;
+}
+
+.color_scheme_dark .cal_info span[style*="color:#999"] {
+  color: var(--att-text-subtle) !important;
+}
+
+.color_scheme_dark .sat .table-condensed tbody td a {
+  color: var(--att-text);
+}
+
+.color_scheme_dark .sat .table-condensed tbody td a:hover {
+  color: var(--att-accent);
+}
+
+.color_scheme_dark .sat [style*="color:#000000"],
+.color_scheme_dark .navi [style*="color:#000000"] {
+  color: var(--att-text) !important;
+}
+
+
+/* ============================================================
+   15. RESPONSIVE ≤ 800px — Calendar 2-row + Board card layout
+   ============================================================
+   Column order in original <table>:
+     1: 순위  2: 출석시각  3: 인사말  4: 별명
+     5: 포인트  6: 랜덤 포인트  7: 개근  8: 총 출석일
+   ============================================================ */
+
+@media (max-width: 800px) {
+
+  /* ── PC/Mobile info table switch ── */
+  .sat_info {
+    display: none !important;
+  }
+  .sat_info_mobile {
+    display: block !important;
+  }
+
+  /* Mobile info table: don't shrink, full-width readable */
+  .sat_info_mobile .table-bordered {
+    overflow: visible;
+    table-layout: auto;
+    width: 100%;
+  }
+
+  .sat_info_mobile .table th,
+  .sat_info_mobile .table td {
+    white-space: nowrap;
+  }
+
+  /* ── Navi button alignment fix ── */
+  .navi {
+    justify-content: flex-start;
+  }
+
+  .navi > strong.att-btn {
+    flex: 0 0 100%;
+  }
+
+  .navi > span[style*="margin-left:20px"] {
+    margin-left: 0 !important;
+    flex: 0 0 100%;
+    justify-content: flex-start;
+  }
+
+  .navi > span[style*="float:right"] {
+    flex: 0 0 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+
+  /* ── Calendar legend: note text wraps ── */
+  .cal_info td[width="100%"] {
+    white-space: normal;
+  }
+
+  .cal_info td[width="100%"] span {
+    float: none !important;
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ── Calendar: 2 rows ── */
+  .listTable {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .listTable tbody {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .listTable tbody tr {
+    display: contents;
+  }
+
+  .listTable td.stamp,
+  .listTable td.stamp1 {
+    flex: 0 0 calc(100% / 16);
+    max-width: calc(100% / 16);
+    box-sizing: border-box;
+  }
+
+
+  /* ── Board table: card-style two-line rows ── */
+  .sat .table-condensed {
+    display: block;
+    overflow: visible;
+    white-space: normal;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .sat .table-condensed thead {
+    display: none;
+  }
+
+  .sat .table-condensed tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sat .table-condensed tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    padding: 10px 12px;
+    border: 1px solid var(--att-border);
+    border-radius: var(--att-radius-sm);
+    background: var(--att-bg);
+    box-shadow: var(--att-shadow-sm);
+    transition: background .12s ease;
+  }
+
+  .sat .table-condensed tbody tr:hover {
+    background: var(--att-overlay);
+  }
+
+  /* Striped backgrounds on card rows */
+  .sat .table-striped tbody > tr:nth-child(odd) {
+    background: var(--att-bg-secondary);
+  }
+  .sat .table-striped tbody > tr:nth-child(even) {
+    background: var(--att-bg);
+  }
+
+  /* Success (current user) row */
+  .sat .table-striped tbody > tr.success,
+  .sat .table tbody tr.success {
+    background: var(--att-row-highlight) !important;
+    border-left: 3px solid var(--att-success);
+  }
+
+  .sat .table tbody tr.success > td:first-child {
+    box-shadow: none;
+  }
+
+  .sat .table tbody tr.success:hover {
+    background: var(--att-success-bg) !important;
+  }
+
+  /* Reset all td */
+  .sat .table-condensed tbody td {
+    border: none !important;
+    padding: 0 !important;
+    font-size: 13px;
+    text-align: left !important;
+    background: transparent !important;
+    display: none;
+  }
+
+  /* ── Row 1 items ── */
+
+  /* 순위 (td 1) */
+  .sat .table-condensed tbody td:nth-child(1) {
+    display: block;
+    order: 1;
+    flex: 0 0 44px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--att-text-muted);
+    text-align: center !important;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 인사말 (td 3) */
+  .sat .table-condensed tbody td:nth-child(3) {
+    display: block;
+    order: 2;
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* 개근 (td 7) */
+  .sat .table-condensed tbody td:nth-child(7) {
+    display: block;
+    order: 3;
+    flex: 0 0 auto;
+    font-size: 12px;
+    text-align: right !important;
+    white-space: nowrap;
+    color: var(--att-text-muted);
+    margin-left: 8px;
+  }
+
+  /* 총 출석일 (td 8) */
+  .sat .table-condensed tbody td:nth-child(8) {
+    display: block;
+    order: 4;
+    flex: 0 0 auto;
+    font-size: 12px;
+    text-align: right !important;
+    white-space: nowrap;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+
+  /* ── Row 2: sub-info ── */
+
+  /* 별명 (td 4) — full width block → forces line break */
+  .sat .table-condensed tbody td:nth-child(4) {
+    display: block;
+    order: 10;
+    flex: 0 0 100%;
+    font-size: 11px;
+    color: var(--att-text-subtle);
+    padding-top: 5px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sat .table-condensed tbody td:nth-child(4) img {
+    vertical-align: middle;
+    margin-right: 2px;
+    max-height: 14px;
+  }
+
+  /* 출석시각 (td 2) */
+  .sat .table-condensed tbody td:nth-child(2) {
+    display: inline-block;
+    order: 11;
+    font-size: 11px !important;
+    color: var(--att-text-subtle);
+    font-family: inherit !important;
+    font-variant-numeric: inherit;
+    white-space: nowrap;
+    padding-top: 2px !important;
+  }
+
+  .sat .table-condensed tbody td:nth-child(2)::before {
+    content: none;
+  }
+
+  /* 포인트 (td 5) */
+  .sat .table-condensed tbody td:nth-child(5) {
+    display: inline-block;
+    order: 12;
+    font-size: 11px !important;
+    font-family: inherit !important;
+    font-weight: normal;
+    color: var(--att-text-subtle);
+    white-space: nowrap;
+    padding-top: 2px !important;
+  }
+
+  .sat .table-condensed tbody td:nth-child(5)::before {
+    content: " · P:";
+    color: var(--att-text-subtle);
+  }
+
+  .sat .table-condensed tbody td:nth-child(5) a {
+    font-size: 11px !important;
+    font-family: inherit !important;
+    font-weight: normal;
+    color: var(--att-text-subtle);
+  }
+
+  /* 랜덤 포인트 (td 6) */
+  .sat .table-condensed tbody td:nth-child(6) {
+    display: inline-block;
+    order: 13;
+    font-size: 11px !important;
+    font-family: inherit !important;
+    font-weight: normal;
+    color: var(--att-text-subtle);
+    white-space: nowrap;
+    padding-top: 2px !important;
+  }
+
+  .sat .table-condensed tbody td:nth-child(6)::before {
+    content: " · R:";
+    color: var(--att-text-subtle);
+  }
+
+  /* 랜덤 포인트 span 폰트 통일 */
+  .sat .table-condensed tbody .randomdata span,
+  .sat .table-condensed tbody td.randomdata span {
+    display: inline;
+    min-width: 0;
+    padding: 0;
+    border-radius: 0;
+    font-size: 11px !important;
+    font-family: inherit !important;
+    font-weight: normal;
+  }
+
+  /* Pagination */
+  .sat .pagination ul > li > a,
+  .sat .pagination ul > li > span {
+    min-width: 30px;
+    height: 32px;
+    padding: 0 6px;
+    font-size: 12px;
+  }
+
+  /* Settings info table — not for sat_info_mobile */
+  .sat.sat_info .table-bordered {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sat .table th,
+  .sat .table td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+
+/* ============================================================
+   16. RESPONSIVE ≤ 600px
+   ============================================================ */
+
+@media (max-width: 600px) {
+  .xl .nav {
+    flex-wrap: wrap;
+  }
+
+  .xl .nav > li > a {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .navi {
+    gap: 6px;
+    padding: 10px 0;
+  }
+
+  .navi .att-btn,
+  .att-btn-primary {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .navi > span[style*="float:right"] {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .listTable td.stamp,
+  .listTable td.stamp1 {
+    height: 52px;
+  }
+
+  .listTable td.stamp::after,
+  .listTable td.stamp1::after {
+    width: 5px;
+    height: 5px;
+    bottom: 6px;
+  }
+
+  .listTable td.stamp span:not(.check),
+  .listTable td.stamp1 span:not(.check) {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .listTable td.stamp span span[style*="background:#000"],
+  .listTable td.stamp span span[style*="background:#F66"],
+  .listTable td.stamp span span[style*="background:#f66"] {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+
+/* ============================================================
+   17. RESPONSIVE ≤ 480px
+   ============================================================ */
+
+@media (max-width: 480px) {
+  .att { padding: 0 8px; }
+
+  .xl .nav > li > a {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .sat .table th,
+  .sat .table td {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .sat .table th { width: 70px; }
+
+  .sat .alert {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .sat .alert h4 { font-size: 13px; }
+
+  .listTable td.stamp,
+  .listTable td.stamp1 {
+    height: 44px;
+  }
+
+  .listTable td.stamp::after,
+  .listTable td.stamp1::after {
+    width: 4px;
+    height: 4px;
+    bottom: 5px;
+  }
+
+  .listTable td.stamp span:not(.check),
+  .listTable td.stamp1 span:not(.check) {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .listTable td.stamp span span[style*="background:#000"],
+  .listTable td.stamp span span[style*="background:#F66"],
+  .listTable td.stamp span span[style*="background:#f66"] {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 10px !important;
+  }
+
+  /* Card rows tighter */
+  .sat .table-condensed tbody tr {
+    padding: 8px 10px;
+  }
+
+  .sat .table-condensed tbody td:nth-child(1) {
+    flex: 0 0 40px;
+    font-size: 13px;
+  }
+
+  .sat .table-condensed tbody td:nth-child(3) {
+    font-size: 12px;
+  }
+
+  .sat .table-condensed tbody td:nth-child(2),
+  .sat .table-condensed tbody td:nth-child(4),
+  .sat .table-condensed tbody td:nth-child(5),
+  .sat .table-condensed tbody td:nth-child(6) {
+    font-size: 10px !important;
+  }
+
+  .sat .table-condensed tbody td:nth-child(5) a {
+    font-size: 10px !important;
+  }
+
+  .sat .table-condensed tbody .randomdata span,
+  .sat .table-condensed tbody td.randomdata span {
+    font-size: 10px !important;
+  }
+
+  .sat .table-condensed tbody td:nth-child(7),
+  .sat .table-condensed tbody td:nth-child(8) {
+    font-size: 11px;
+  }
+}
+
+
+/* ============================================================
+   18. ANIMATIONS
+   ============================================================ */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   19. PRINT
+   ============================================================ */
+
+@media print {
+  .navi .att-btn,
+  .att-btn-primary { display: none !important; }
+
+  .sat .alert {
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+  }
+
+  .sat .table,
+  .sat .table-condensed { box-shadow: none !important; }
+
+  .sat .pagination { display: none !important; }
+}
